@@ -5,8 +5,7 @@
 		
 		$(".icon-nav > a").mouseover(function(){
 			$(this).doTimeout( "a", 250, function(elem){
-				$(this).animate({ opacity: 1 }, 100);
-				$(this).effect("bounce", { times:3 }, 200, function() {
+				$(this).animate({ opacity: 1 }, 100, function() {
 					// Animation complete.
 					$(".tip", this).show(50);
 				});
@@ -14,6 +13,7 @@
 			
 		});
 		$(".icon-nav > a").mouseout(function(){
+			$(this).stop(true, true)
 			$(this).doTimeout( "a", 50, function(elem){
 				$(this).animate({ opacity: .5 }, 100, function() {
 					// Animation complete.
@@ -21,6 +21,10 @@
 				});
 			}, this);
 			
+		});
+		
+		$(".icon-nav > a").click(function(){
+			$(this).effect("bounce", { times:3 }, 200);
 		});
 	});
 }( jQuery ));
